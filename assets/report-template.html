@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<title>报告样式标准（report-sample）</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin:0; padding:36px 22px 70px; background:#fff; color:#1a1a1a;
+    font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif; font-size:14px; line-height:1.7; }
+  .wrap { max-width:1160px; margin:0 auto; }
+  h1 { font-size:24px; font-weight:600; margin:0 0 6px; }
+  .sub { color:#666; font-size:13px; margin-bottom:22px; }
+  .kpi { display:flex; gap:12px; flex-wrap:wrap; border:1px solid #1a1a1a; padding:14px 18px; margin-bottom:24px; }
+  .kpi div { flex:1; min-width:110px; }
+  .kpi .k { color:#666; font-size:12px; }
+  .kpi .v { font-family:Consolas,monospace; font-size:18px; font-weight:600; }
+  details.note { border-top:1px solid #d0d0d0; padding:12px 0; }
+  details.note[open] { padding-bottom:18px; }
+  summary { cursor:pointer; display:flex; align-items:center; gap:9px; list-style:none; flex-wrap:wrap; padding:4px 0; }
+  summary::-webkit-details-marker { display:none; }
+  summary::before { content:"▸"; color:#999; font-size:12px; }
+  details[open] summary::before { content:"▾"; }
+  .rank { font-family:Consolas,monospace; border:1px solid #1a1a1a; width:22px; height:22px;
+    display:inline-flex; align-items:center; justify-content:center; font-size:12px; font-weight:600; }
+  .ntype { font-size:11px; padding:0 6px; border:1px solid; }
+  .ntype.v { border-color:#0a5d8c; color:#0a5d8c; }
+  .ntitle { font-weight:600; font-size:14.5px; }
+  .nmetric { color:#666; font-size:12.5px; font-family:Consolas,monospace; }
+  .jump { font-size:11px; padding:0 8px; border:1px solid #0a5d8c; color:#0a5d8c;
+    text-decoration:none; font-family:Consolas,monospace; white-space:nowrap; }
+  .jump:hover { background:#0a5d8c; color:#fff; }
+  .vbadge { font-size:11px; padding:0 7px; border:1px solid; margin-left:auto; font-family:Consolas,monospace; }
+  .v-ok { color:#0a7d3c; border-color:#0a7d3c; }
+  .v-mid { color:#b45309; border-color:#b45309; }
+  .v-bad { color:#b91c1c; border-color:#b91c1c; }
+  .empty { color:#999; font-size:12.5px; padding:14px 9px; }
+  .meta { display:flex; gap:16px; flex-wrap:wrap; color:#666; font-size:12px;
+    padding:8px 0 10px 30px; font-family:Consolas,monospace; }
+  .meta .warn { color:#b45309; }
+  .meta .cid { color:#bbb; margin-left:auto; }
+  table { width:calc(100% - 30px); border-collapse:collapse; font-size:13px; margin-left:30px; }
+  th { text-align:left; font-weight:600; color:#555; padding:7px 9px; border-bottom:1px solid #1a1a1a; white-space:nowrap; }
+  td { padding:7px 9px; border-bottom:1px solid #ececec; vertical-align:top; }
+  .num { font-family:Consolas,monospace; white-space:nowrap; }
+  .b { font-weight:600; }
+  .loc { color:#999; font-size:11px; margin-left:5px; }
+  .foot { color:#666; font-size:12px; margin-top:26px; border-top:1px solid #e0e0e0; padding-top:12px; }
+  .rule { border:1px solid #e0e0e0; padding:12px 16px; margin:0 0 24px; font-size:12.5px; }
+  .rule b { font-family:Consolas,monospace; }
+
+.sample-note{background:#fffbeb;border:1px solid #e0d8b0;padding:10px 14px;margin-bottom:20px;font-size:12.5px;color:#666}
+</style></head><body><div class="wrap">
+
+<div class="sample-note">
+  <b>本文件是报告样式的唯一标准。</b>生成报告时以此结构为准；要改样式请修改本文件并同步
+  <code>scripts/gen_report_xhs_style.mjs</code> 的渲染逻辑，不要另写一份报告。
+</div>
+
+<h1>「示例关键词」· 分层抓取 · 视频与高赞评价</h1>
+<div class="sub">生成时间 2026/1/1 00:00:00　·　抓取时间 2026/1/1 00:00 ~ 2026/1/1 00:00　·　口径 分 6 档按视频点赞定评价门槛</div>
+
+<div class="kpi">
+<div><div class="k">视频数</div><div class="v">262</div></div>
+<div><div class="k">评价条数</div><div class="v">11,708</div></div>
+<div><div class="k">达标评价</div><div class="v">1,401</div></div>
+<div><div class="k">达标率</div><div class="v">12.0%</div></div>
+<div><div class="k">分层档数</div><div class="v">6</div></div>
+</div>
+
+<div class="rule">分层阈值：&lt;5千 <b>≥5</b>　·　5千–1万 <b>≥10</b>　·　1万–5万 <b>≥20</b>　·　5万–10万 <b>≥50</b>　·　10万–50万 <b>≥100</b>　·　≥50万 <b>≥500</b></div>
+
+<details class="note"><summary>
+<span class="rank">1</span>
+<span class="ntype v">视频</span>
+<span class="ntitle">示例博主</span>
+<span class="nmetric">300.2万赞 · 藏 74.4万 · 评 3.4万 · 转 72.9万</span>
+<a class="jump" href="https://www.douyin.com/video/0000000000000000000" target="_blank">视频 ↗</a>
+<span class="vbadge v-ok">达标 20 条 · 充足</span>
+</summary>
+<div class="meta">
+<span>阈值 ≥500 赞（视频 ≥50万）</span>
+<span>抓到 20 条评论 / 21 页</span>
+<span>停止 has_more（已取前 N 条）</span>
+<span>质量 充足</span>
+<span class="cid">0000000000000000000</span>
+</div>
+<table><thead><tr><th style="width:34px">#</th><th style="width:76px">赞</th>
+<th style="width:72px">占赞比</th><th>评价内容</th><th style="width:120px">评价者</th>
+<th style="width:82px">时间</th><th style="width:56px">子回复</th></tr></thead><tbody>
+<tr><td class="num">1</td><td class="num b">412,343</td><td class="num">13.734%</td>
+<td>示例评价内容，保留原始表情[灵机一动]</td><td>示例用户<span class="loc">湖北</span></td>
+<td class="num">2026-03-02</td><td class="num">1269</td></tr>
+<tr><td class="num">2</td><td class="num b">180,252</td><td class="num">6.004%</td>
+<td>第二条示例评价</td><td>另一用户<span class="loc">广东</span></td>
+<td class="num">2026-03-02</td><td class="num">311</td></tr>
+</tbody></table>
+</details>
+
+<details class="note"><summary>
+<span class="rank">2</span>
+<span class="ntype v">视频</span>
+<span class="ntitle">无达标的示例</span>
+<span class="nmetric">22赞 · 藏 9 · 评 6 · 转 1</span>
+<a class="jump" href="https://www.douyin.com/video/0000000000000000001" target="_blank">视频 ↗</a>
+<span class="vbadge v-bad">达标 0 条 · 极弱</span>
+</summary>
+<div class="meta">
+<span>阈值 ≥5 赞（视频 &lt;5千）</span>
+<span>抓到 4 条评论 / 1 页</span>
+<span>停止 reached_end（已抓完）</span>
+<span>质量 极弱</span>
+<span class="cid">0000000000000000001</span>
+</div>
+<div class="empty">该视频评论区没有 ≥5 赞的评价（抓到 4 条，最高 1 赞）</div>
+</details>
+
+<div class="foot">
+共 262 条视频 · 11,708 条评价 · 达标 1,401 条（12.0%）<br>
+评价为每条视频按点赞降序抓取的前 20 条一级评论（不足 20 条则全取），覆盖平台评论总量约 1.2%，非全量。<br>
+抖音不公开播放量；「占赞比」= 单条评价点赞 ÷ 该视频点赞。
+</div>
+
+</div></body></html>

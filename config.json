@@ -1,0 +1,31 @@
+{
+  "defaults": {
+    "top": 6,
+    "n": 20,
+    "pages": 20,
+    "maxAttempts": 2,
+    "scroll": 14,
+    "cooldownSec": 15,
+    "keywordCooldownMin": 10,
+    "searchCooldownSec": 45,
+    "batch": 5,
+    "parallel": 3,
+    "outDir": "dy_output"
+  },
+  "tiers": [
+    { "label": "<5千", "min": 0, "max": 5000, "minLike": 5, "fetchN": 10 },
+    { "label": "5千-1万", "min": 5000, "max": 10000, "minLike": 10, "fetchN": 15 },
+    { "label": "1万-5万", "min": 10000, "max": 50000, "minLike": 20, "fetchN": 20 },
+    { "label": "5万-10万", "min": 50000, "max": 100000, "minLike": 50, "fetchN": 20 },
+    { "label": "10万-50万", "min": 100000, "max": 500000, "minLike": 100, "fetchN": 20 },
+    { "label": "≥50万", "min": 500000, "max": null, "minLike": 500, "fetchN": 20 }
+  ],
+  "qualityGrades": {
+    "充足": "达标 >= 8 条",
+    "一般": "达标 3-7 条",
+    "偏弱": "达标 1-2 条",
+    "极弱": "达标 0 条"
+  },
+  "profile": "~/.workbuddy/cache/dy-scrape-profile",
+  "note": "修改 thresholds 后请同步 lib/quality.mjs 与 SKILL.md"
+}

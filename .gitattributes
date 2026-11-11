@@ -1,0 +1,22 @@
+# 统一换行符：仓库内一律 LF，检出时也保持 LF
+# 原因：CI 跑在 windows-latest，但 shell/yaml 用 CRLF 容易出怪问题；
+# Node 和 Python 都能正常读 LF。
+* text=auto eol=lf
+
+*.mjs   text eol=lf
+*.js    text eol=lf
+*.py    text eol=lf
+*.json  text eol=lf
+*.md    text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.html  text eol=lf
+*.css   text eol=lf
+*.txt   text eol=lf
+
+# 二进制：不要做任何换行转换
+*.zip   binary
+*.xlsx  binary
+*.png   binary
+*.jpg   binary
+*.ico   binary

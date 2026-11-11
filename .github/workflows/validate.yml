@@ -1,0 +1,31 @@
+name: validate
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  static:
+    # 技能仅在 Windows 上验证过，CI 也用 Windows，避免“本地过、CI 挂”
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 静态门禁（frontmatter / 文件 / 语法 / 平台收口）
+        run: node scripts/ci_check.mjs
+
+      - name: 判定逻辑单测
+        run: node lib/test_depth_judge.mjs
+
+      - name: 方案自检（脚本完整性 / 参数一致性 / 调用链）
+        run: node scripts/audit_scheme.mjs
+
+      # 真实抓取不进 CI：需要图形界面、登录态与稳定网络，
+      # 抖音还会对数据中心 IP 做风控。数据层验收请在本地跑：
+      #   node run.mjs smoke --rounds 3

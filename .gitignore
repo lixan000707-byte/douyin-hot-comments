@@ -1,0 +1,18 @@
+# 抓取产物与临时数据
+dy_output/
+_smoke/
+*.log
+*.tmp
+.dy_top_tmp_*
+
+# 浏览器 profile（含 cookie，绝不入库）
+*profile*/
+.top_profile/
+
+# 依赖（本项目零依赖，占位防止误提交）
+node_modules/
+
+# 系统垃圾
+.DS_Store
+Thumbs.db
+desktop.ini
